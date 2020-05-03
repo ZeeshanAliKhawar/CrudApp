@@ -58,6 +58,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <form @submit.prevent ="createUser">
       <div class="modal-body">
 
        <div class="form-group">
@@ -109,8 +110,9 @@
       
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Create User</button>
+        <button type="submit" class="btn btn-primary">Create User</button>
       </div>
+      </form>
     </div>
   </div>
 </div>
@@ -132,6 +134,11 @@
           })
           
         }
+      },
+      methods: {
+          createUser(){
+            this.form.post('api/user');
+          } 
       },
         mounted() {
             console.log('Component mounted.')
