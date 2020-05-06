@@ -9,6 +9,7 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import moment from 'moment';
+
 import { Form, HasError, AlertError } from 'vform'
 
 window.Form = Form;
@@ -21,6 +22,15 @@ import axios from 'axios'
 Vue.prototype.$axios = axios;
 
 Vue.use(VueRouter)
+
+//progressbar from github
+import VueProgressBar from 'vue-progressbar'
+Vue.use(VueProgressBar, {
+  color: 'rgb(143, 255, 199)',
+  failedColor: 'red',
+  height: '4px'
+})
+
 
 let routes = [
     { path: '/dashboard', component: require('./components/Dashboard.vue').default },
