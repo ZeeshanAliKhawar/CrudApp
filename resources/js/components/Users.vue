@@ -145,11 +145,18 @@
           createUser(){
             this.$Progress.start();
             this.form.post('api/user');
+            $('#addnew').modal('hide')
+            
+            Toast.fire({
+             icon: 'success',
+             title: 'User Created successfully'
+              })
              this.$Progress.finish();
           } 
       },
         created() {
             this.loadUsers();
+           // setInterval(() => this.loadUsers(), 3000);
         }
     }
 </script>
