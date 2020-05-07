@@ -131,6 +131,7 @@
         editmode: false,
           users : {},
           form: new Form({
+            id : '',
             name : '',
             email : '',
             password : '',
@@ -144,7 +145,23 @@
       methods: {
 
         updateUser(){
-              console.log('Editing data');
+          this.$Progress.start();
+             // console.log('Editing data');
+             this.form.put('api/user/'+this.form.id)
+             .then(()=>{
+               $('#addnew').modal('hide')
+               Swal.fire(
+                      'Updated!',
+                      'Information has been Updated.',
+                      'success'
+                    )
+              Fire.$emit('AfterCreate');   
+             this.$Progress.finish();
+             })
+             .catch(()=>{
+          this.$Progress.fail(); 
+            
+             });
         },
         editModal(user){
           this.editmode = true;
